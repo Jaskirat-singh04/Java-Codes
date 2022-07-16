@@ -1,0 +1,106 @@
+While very simple classes may contain only code or only data, most real-world classescontain both.
+
+The data, or variables, defined within a class are called instance variables. The
+code is contained within methods. as a generalrule, it is the methods that determine how a class’ data can be used.
+
+All methods have the same general form as main( ), which we have been using thus far. However, most methods will not be specified as static or public. Notice that the general form of a class does not specify a     main()) method. Java classes do not need to have a main( )method. You only specify one if that class is the starting point for your program. Further, some kinds of Java applications don’t require a main( ) method at all.
+
+obtaining objects of a
+class is a two-step process. First, you must declare a variable of the class type. This variable does not define an object Instead, it is simply a variable that can refer to an object. Second, you must acquire an actual, physical copy of the object and assign it to that variable. You can do this using the new operator. The new operator dynamically allocates (that is, allocates at run time) memory for an object and returns a reference to it. This reference is, essentially, the address in memory of the
+object allocated by new. This reference is then stored in the variable. Thus, in Java, all class objects must be dynamically allocated.
+
+for example:
+
+// Box mybox = new Box();
+
+This statement combines the two steps just described. It can be rewritten like this to show each step more clearly:
+
+// Box mybox;  declare referece to the object
+// mybox = new Box(); allocate a box object
+
+The first line declares mybox as a reference to an object of type Box. At this point, mybox does not yet refer to an actual object. The next line allocates an object and assigns a reference to it to mybox. After the second line executes, you can use
+mybox as if it were a Box object. But in reality, mybox simply holds, in essence, the memory address of the actual Box object.
+
+
+statement
+
+Box mybox()            |----|
+                       |____|
+                       mybox
+
+
+mybox = new Box()    |----|____\     width
+               |     |____|    /     height
+               |      mybox          depth
+              \|/
+           constructor
+
+The class name followed by parentheses specifies the constructor for the class. A constructor defines what occurs when an
+object of a class is created. Constructors are an important part of all classes and have many significant attributes. Most real-world classes explicitly define their own constructors within their class definition. However, if no explicit constructor is
+specified, then Java will automatically supply a default constructor.
+
+The class name followed by parentheses specifies the constructor for the class. A constructor defines what occurs when an
+object of a class is created. Constructors are an important part of all classes and have many significant attributes. Most real-world classes explicitly define their own constructors within their class definition. However, if no explicit constructor is
+specified, then Java will automatically supply a default constructor.
+
+
+ASSIGNING OBJECT REFERENCE VARIABLE 
+
+For example, what do you think the following fragment does?
+
+box bi = new box();
+box b2 = b1;
+
+after this fragment executes, b1 and b2 will both refer to the same object. The assignment of b1 to b2 did not allocate any
+memory or copy any part of the original object. It simply makes b2 refer to the same object as does b1. Thus, any changes made to the object through b2 will affect the object to which b1 is referring, since they are the same object.
+
+box b1 =  new box();
+box b2 = b1;
+.....
+...
+b1= null;
+
+Here, b1 has been set to null, but b2 still points to the original object.
+
+
+Constructors
+
+Because the requirement for initialization is so common, Java allows objects to initialize themselves when they are created. This automatic initialization is performed through the use of a constructor. constructor is automatically called when the object is created, before the new operator completes. no return type, implicit return type of a class’ constructor is the class type itself.
+
+why the parentheses are needed after the class name. What
+is actually happening is that the constructor for the class is being called. Thus, in the
+line 
+
+//box mybox = new box();
+
+new Box( ) is calling the Box( ) constructor.Java creates a default constructor for the class.Once you define your own constructor, the default constructor is no longer used.
+
+
+THIS 
+
+this can be used inside any method to refer to the current object.this is always a reference to the object on which the method was invoked.
+
+EX:
+box(double w, doouble h, double d){
+    this.width = w;
+    this.height = h;
+    this.depth = d;
+}
+//use of this is
+redundant, but perfectly correct.
+
+why width, height,and depth were not used as the names of the parameters to the Box( ) constructor inside the Box class. If they had been, then width, for example, would have referred to the formal parameter, hiding the instance variable width. While it is usually easier to simply use different names, there is another way around this situation. Because this lets you refer directly to the object, you can use it to resolve any namespace collisions that might occur between instance variables and local variables. For
+example,
+
+box(double w, doouble h, double d){
+    this.w = w;
+    this.h = h;
+    this.d = d;
+}
+//confusing, better avoid.
+
+
+Garbage Collection
+
+C++, dynamically allocated objects must be manually released by use of a delete operator. Java takes a different
+approach; it handles deallocation for you automatically.this is called garbage collection :D 

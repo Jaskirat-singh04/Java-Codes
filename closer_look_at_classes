@@ -1,0 +1,73 @@
+OVERLOADING CONSTRUCTORS
+
+when u declare a constructor like, box(int, int ,int), this implies that the object needs to pass three parameters in order to ionvoke the current construtor making 
+
+// Box obj = new Box();  
+
+invalid since the oobject do not pass three elements to the constructor.
+
+
+ARGUMENT PASSING
+
+When you pass a primitive type to a method, it is passed by value. Thus, a copy of the argument is made, and what occurs to the parameter that receives the argument has no effect outside the method. 
+
+When you pass an object to a method, the situation changes dramatically, because objects are passed by what is effectively call-by-reference. Keep in mind that when you create a variable of a class type, you are only creating a reference to an object.
+Thus, when you pass this reference to a method, the parameter that receives it will refer to the same object as that referred to by the argument. 
+
+
+ACCESS CONTROL INTRODUCTION
+
+why main( ) has always been preceded by the public modifier. It is called by code that is outside the program— that is, by the Java run-time system. When no access modifier is used, then by default the member of a class is public
+
+STATIC
+
+Normally, a class member must be
+accessed only in conjunction with an object of its class. However, it is possible to
+create a member that can be used by itself, without reference to a specific instance.When a
+member is declared static, it can be accessed before any objects of its class arecreated, and without reference to any object.main( ) is declared as static because it must be called before any objects exist.
+When
+objects of its class are declared, no copy of a static variable is made. Instead, all
+instances of the class share the same static variable.
+
+static have some restrictions tho:
+1.They can only directly call other static methods of their class.
+2.They can only directly access static variables of their class.
+3.They cannot refer to this or super in any way.
+
+FINAL
+
+A field can be declared as final. Doing so prevents its contents from being modified,
+making it, essentially, a constant
+// final int NEW = 1;
+
+Subsequent parts of your program can now use NEW, etc., as if they were
+constants, without fear that a value has been changed. It is a common coding
+convention to choose all uppercase identifiers for final fields
+
+INTRODUCING NESTED AND INNER CLASSES
+
+if class B is defined within class A, then B does not exist independently of A.
+A nested class has access to the members, including private members, of the class in
+which it is nested. However, the enclosing class does not have access to the members
+of the nested class.
+There are two types of nested classes: static and non-static. 
+
+1. A static nested class is
+one that has the static modifier applied. Because it is static -> it must access the non-
+static members of its enclosing class through an object. -> it cannot refer to
+non-static members of its enclosing class directly -> seldom used.
+
+2. The most important type of nested class is the inner class. An inner class is a non-
+static nested class. It has access to all of the variables and methods of its outer class
+and may refer to them directly in the same way that other non-static members of the
+outer class do.
+
+
+EXPLORING STRING CLASS
+
+String is probably the most
+commonly used class in Java’s class library.every string you create is
+actually an object of type String.once a String object is created, its contents cannot be altered.Java defines peer classes of String, called StringBuffer and StringBuilder,
+which allow strings to be altered
+
+// String myString = "heheheheh";
